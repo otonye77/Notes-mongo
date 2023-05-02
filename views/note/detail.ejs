@@ -1,0 +1,24 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/book.css">
+</head>
+
+<body>
+    <header class="main-header">
+      <nav class="main-header__nav">
+       <ul class="main-header__item-list">
+        <li class="main-header__item">
+          <a href="/books">Notes</a>
+        </li>
+        <li class="main-header__item">
+          <a href="/notes/add-note">Add New Note</a>
+        </li>
+       </ul>
+      </nav>
+    </header>
+    <main class="centered">
+        <h1><%= note.Title %></h1>
+        <h2>A note by <%= note.Description %></h2>
+        <h3>Note size <%= note.pageCount %> </h3>
+    </main>
+
+<%- include('../includes/end.ejs') %>

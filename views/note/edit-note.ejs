@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title><%= docTitle %></title>
+    <link rel="stylesheet" href="/css/forms.css" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/book.css" />
+  </head>
+
+  <body>
+    <header class="main-header">
+      <nav class="main-header__nav">
+        <ul class="main-header__item-list">
+          <li class="main-header__item">
+            <a href="/notes">Notes</a>
+          </li>
+          <li class="main-header__item">
+            <a href="/notes/add-note">Add New Note</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <form
+        class="book-form"
+        action="/notes/<% if (editing) {%>edit-note<% } else { %>add-note<% } %>"
+        method="POST"
+      >
+        <div class="form-control">
+          <label for="title">Title</label>
+          <input
+            type="text"
+            name="Title"
+            id="title"
+            value="<% if(editing) { %><%= note.Title %><% } %>"
+          />
+        </div>
+      
+        <div class="form-control">
+          <label for="description">Description</label>
+          <textarea name="Description" id="description" rows="5">
+  <% if(editing) { %><%= note.Description %><% } %></textarea
+          >
+        </div>
+        <div class="form-control">
+          <label for="price">Page Count</label>
+          <input
+            type="number"
+            name="pageCount"
+            id="price"
+            step="0.01"
+            value="<% if(editing) { %><%= note.pageCount %><% } %>"
+          />
+        </div>
+        <div class="form-control">
+          <label for="imageURL">Status</label>
+          <input
+            type="text"
+            name="Genre"
+            id="imageURL"
+            value="<% if(editing) { %><%= note.status %><% } %>"
+          />
+        </div>
+
+        <% if(editing) { %>
+        <input type="hidden" value="<%= note._id %>" name="noteID" />
+        <% } %>
+
+        <button class="btn" type="submit">
+          <% if(editing) { %>Update Note<% } else { %>Add Note<% } %>
+        </button>
+      </form>
+    </main>
+  </body>
+</html>
